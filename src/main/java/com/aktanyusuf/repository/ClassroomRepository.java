@@ -1,4 +1,9 @@
 package com.aktanyusuf.repository;
 
-public interface ClassroomRepository {
+import com.aktanyusuf.model.Classroom;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface ClassroomRepository extends JpaRepository<Classroom, UUID> {
 }
