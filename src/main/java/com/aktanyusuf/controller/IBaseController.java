@@ -1,16 +1,17 @@
 package com.aktanyusuf.controller;
 
+import java.util.List;
 import java.util.UUID;
 
-public interface IBaseController {
+public interface IBaseController<T> {
 
-    public <T> T add(T object);
+    List<T> add(T object);
 
-    public <T> T getAll();
+    List<T> getAll();
 
-    public <T> T update(UUID id, T object);
+    T update(UUID id, T object);
 
-    public <T> T delete(UUID id, T object);
+    List<T> delete(UUID id);
 
-    public <T> T getById(UUID id);
+    T getById(UUID id);
 }

@@ -2,31 +2,32 @@ package com.aktanyusuf.service.impl;
 
 import com.aktanyusuf.service.ICourseService;
 
+import java.util.List;
 import java.util.UUID;
 
 public class CourseService implements ICourseService {
     @Override
-    public <T> T add(T object) {
+    public List add(Object object) {
+        return List.of();
+    }
+
+    @Override
+    public List getAll() {
+        return List.of();
+    }
+
+    @Override
+    public Object update(UUID id, Object object) {
         return null;
     }
 
     @Override
-    public <T> T getAll() {
-        return null;
+    public List delete(UUID id) {
+        return List.of();
     }
 
     @Override
-    public <T> T update(UUID id, T object) {
-        return null;
-    }
-
-    @Override
-    public <T> T delete(UUID id, T object) {
-        return null;
-    }
-
-    @Override
-    public <T> T getById(UUID id) {
+    public Object getById(UUID id) {
         return null;
     }
 }
