@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.UUID;
 
 public class CourseService implements ICourseService {
+
     @Override
-    public List add(Object object) {
+    public List add(Object dto) {
         return List.of();
     }
 
@@ -17,17 +18,17 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public Object update(UUID id, Object object) {
+    public Object update(Object id, Object object) {
         return null;
     }
 
     @Override
-    public List delete(UUID id) {
+    public List delete(Object id) {
         return List.of();
     }
 
     @Override
-    public Object getById(UUID id) {
+    public Object getById(Object id) {
         return null;
     }
 }

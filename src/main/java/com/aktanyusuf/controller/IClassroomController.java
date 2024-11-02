@@ -1,4 +1,9 @@
 package com.aktanyusuf.controller;
 
-public interface IClassroomController extends IBaseController{
+import com.aktanyusuf.dto.DtoClassroom;
+import com.aktanyusuf.dto.DtoClassroomIU;
+
+import java.util.UUID;
+
+public interface IClassroomController extends IBaseController<DtoClassroom, UUID, DtoClassroomIU>{
 }

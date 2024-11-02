@@ -2,11 +2,11 @@ package com.aktanyusuf.controller.impl;
 
 import com.aktanyusuf.controller.IClassroomController;
 import com.aktanyusuf.dto.DtoClassroom;
+import com.aktanyusuf.dto.DtoClassroomIU;
 import com.aktanyusuf.service.impl.ClassroomService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,9 +18,10 @@ public class ClassroomController implements IClassroomController {
     @Autowired
     ClassroomService classroomService;
 
+    @PostMapping
     @Override
-    public List add(Object object) {
-        return List.of();
+    public List<DtoClassroom> add(@RequestBody @Valid DtoClassroomIU dtoClassroomIU) {
+        return classroomService.add(dtoClassroomIU);
     }
 
     @GetMapping
@@ -30,17 +31,18 @@ public class ClassroomController implements IClassroomController {
     }
 
     @Override
-    public Object update(UUID id, Object object) {
+    public DtoClassroom update(UUID id, DtoClassroom object) {
         return null;
     }
 
     @Override
-    public List delete(UUID id) {
+    public List<DtoClassroom> delete(UUID id) {
         return List.of();
     }
 
     @Override
-    public Object getById(UUID id) {
+    public DtoClassroom getById(UUID id) {
         return null;
     }
+
 }

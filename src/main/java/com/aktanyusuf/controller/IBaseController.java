@@ -3,9 +3,9 @@ package com.aktanyusuf.controller;
 import java.util.List;
 import java.util.UUID;
 
-public interface IBaseController<T> {
+public interface IBaseController<T, UUID, IU> {
 
-    List<T> add(T object);
+    List<T> add(IU dto);
 
     List<T> getAll();
 

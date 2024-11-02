@@ -1,6 +1,7 @@
 package com.aktanyusuf.service.impl;
 
 import com.aktanyusuf.dto.DtoClassroom;
+import com.aktanyusuf.dto.DtoClassroomIU;
 import com.aktanyusuf.model.Classroom;
 import com.aktanyusuf.repository.ClassroomRepository;
 import com.aktanyusuf.service.IClassroomService;
@@ -18,10 +19,12 @@ public class ClassroomService implements IClassroomService {
     @Autowired
     ClassroomRepository classroomRepository;
 
-
     @Override
-    public List add(Object object) {
-        return List.of();
+    public List<DtoClassroom> add(DtoClassroomIU dtoClassroomIU) {
+        Classroom classroom = new Classroom();
+        BeanUtils.copyProperties(dtoClassroomIU, classroom);
+        classroomRepository.save(classroom);
+        return getAll();
     }
 
     @Override
@@ -37,17 +40,19 @@ public class ClassroomService implements IClassroomService {
     }
 
     @Override
-    public Object update(UUID id, Object object) {
+    public DtoClassroom update(UUID id, DtoClassroom object) {
         return null;
     }
 
     @Override
-    public List delete(UUID id) {
+    public List<DtoClassroom> delete(UUID id) {
         return List.of();
     }
 
     @Override
-    public Object getById(UUID id) {
+    public DtoClassroom getById(UUID id) {
         return null;
     }
+
+
 }
