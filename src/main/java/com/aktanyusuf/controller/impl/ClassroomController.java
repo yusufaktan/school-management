@@ -42,9 +42,10 @@ public class ClassroomController implements IClassroomController {
         return classroomService.delete(id);
     }
 
+    @GetMapping(path = "/{id}")
     @Override
-    public DtoClassroom getById(UUID id) {
-        return null;
+    public DtoClassroom getById(@PathVariable(name = "id") UUID id) {
+        return classroomService.getById(id);
     }
 
 }

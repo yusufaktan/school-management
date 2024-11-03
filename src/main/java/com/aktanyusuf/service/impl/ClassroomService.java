@@ -69,8 +69,16 @@ public class ClassroomService implements IClassroomService {
 
     @Override
     public DtoClassroom getById(UUID id) {
+        List<Classroom> classrooms = classroomRepository.findAll();
+        for (Classroom classroom : classrooms){
+            if (id.equals(classroom.getId())){
+                DtoClassroom dtoClassroom = new DtoClassroom();
+                BeanUtils.copyProperties(classroom, dtoClassroom);
+                return dtoClassroom;
+
+            }
+        }
         return null;
     }
-
 
 }
