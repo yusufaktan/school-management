@@ -23,10 +23,10 @@ public class Teacher {
     @Column(name = "department_role")
     private DepartmentRole departmentRole;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BaseProfile teacherProfile;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "teacher_course",
             joinColumns = @JoinColumn(name = "teacher_id"),

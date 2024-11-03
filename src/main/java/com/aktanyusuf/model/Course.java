@@ -31,10 +31,10 @@ public class Course {
     @ManyToOne
     private Classroom classroom;
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
     private List<Student> students;
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
     private List<Teacher> teachers;
 
 }

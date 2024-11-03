@@ -30,9 +30,10 @@ public class ClassroomController implements IClassroomController {
         return classroomService.getAll();
     }
 
+    @PutMapping(path = "/{id}")
     @Override
-    public DtoClassroom update(UUID id, DtoClassroom object) {
-        return null;
+    public DtoClassroom update(@PathVariable(name = "id") UUID id, @RequestBody @Valid DtoClassroomIU object) {
+        return classroomService.update(id, object);
     }
 
     @Override

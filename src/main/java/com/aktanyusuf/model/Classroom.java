@@ -26,7 +26,7 @@ public class Classroom {
     @Column(name = "capacity", nullable = false)
     private Integer capacity;
 
-    @OneToMany(mappedBy = "classroom")
+    @OneToMany(mappedBy = "classroom", fetch = FetchType.LAZY)
     private List<Course> courses;
 
 }

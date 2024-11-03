@@ -22,10 +22,10 @@ public class Student {
     @Column(name = "gpa")
     private double gpa;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BaseProfile studentProfile;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_course",
             joinColumns = @JoinColumn(name = "student_id"),

@@ -22,10 +22,10 @@ public class Department {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     private List<Course> courses;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     private List<Teacher> teachers;
 
 }

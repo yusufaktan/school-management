@@ -8,7 +8,7 @@ public interface IBaseService<T, UUID, IU> {
 
     List<T> getAll();
 
-    T update(UUID id, T object);
+    T update(UUID id, IU object);
 
     List<T> delete(UUID id);
 

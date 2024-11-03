@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -34,13 +35,23 @@ public class ClassroomService implements IClassroomService {
         for (Classroom classroom : classrooms){
             DtoClassroom dtoClassroom = new DtoClassroom();
             BeanUtils.copyProperties(classroom, dtoClassroom);
+
             dtoClassrooms.add(dtoClassroom);
         }
         return dtoClassrooms;
     }
 
     @Override
-    public DtoClassroom update(UUID id, DtoClassroom object) {
+    public DtoClassroom update(UUID id, DtoClassroomIU object) {
+        for (Classroom classroom : classroomRepository.findAll()){
+            if (classroom.getId().equals(id)){
+                BeanUtils.copyProperties(object, classroom);
+                classroomRepository.save(classroom);
+                DtoClassroom dtoClassroom = new DtoClassroom();
+                BeanUtils.copyProperties(classroom, dtoClassroom);
+                return dtoClassroom;
+            }
+        }
         return null;
     }
 
