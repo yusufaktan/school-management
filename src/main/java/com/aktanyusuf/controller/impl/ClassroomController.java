@@ -36,9 +36,10 @@ public class ClassroomController implements IClassroomController {
         return classroomService.update(id, object);
     }
 
+    @DeleteMapping(path = "/{id}")
     @Override
-    public List<DtoClassroom> delete(UUID id) {
-        return List.of();
+    public List<DtoClassroom> delete(@PathVariable(name = "id") UUID id) {
+        return classroomService.delete(id);
     }
 
     @Override

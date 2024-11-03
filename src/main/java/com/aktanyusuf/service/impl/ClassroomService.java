@@ -57,7 +57,14 @@ public class ClassroomService implements IClassroomService {
 
     @Override
     public List<DtoClassroom> delete(UUID id) {
-        return List.of();
+        List<Classroom> classrooms = classroomRepository.findAll();
+        for (Classroom classroom : classrooms){
+            if (id.equals(classroom.getId())){
+                classroomRepository.delete(classroom);
+                return getAll();
+            }
+        }
+        return null;
     }
 
     @Override
