@@ -5,10 +5,9 @@ import com.aktanyusuf.controller.IBaseProfileController;
 import com.aktanyusuf.dto.DtoBaseProfile;
 import com.aktanyusuf.dto.DtoBaseProfileIU;
 import com.aktanyusuf.service.impl.BaseProfileService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -20,9 +19,10 @@ public class BaseProfileController implements IBaseProfileController {
     @Autowired
     BaseProfileService baseProfileService;
 
+    @PostMapping
     @Override
-    public List<DtoBaseProfile> add(DtoBaseProfileIU dto) {
-        return List.of();
+    public List<DtoBaseProfile> add(@RequestBody @Valid DtoBaseProfileIU dto) {
+        return baseProfileService.add(dto);
     }
 
     @GetMapping
@@ -31,18 +31,21 @@ public class BaseProfileController implements IBaseProfileController {
         return baseProfileService.getAll();
     }
 
+    @PutMapping(path = "/{id}")
     @Override
-    public DtoBaseProfile update(UUID id, DtoBaseProfileIU object) {
-        return null;
+    public DtoBaseProfile update(@PathVariable(name = "id") UUID id, @RequestBody @Valid DtoBaseProfileIU object) {
+        return baseProfileService.update(id, object);
     }
 
+    @DeleteMapping(path = "/{id}")
     @Override
-    public List<DtoBaseProfile> delete(UUID id) {
-        return List.of();
+    public List<DtoBaseProfile> delete(@PathVariable(name = "id") UUID id) {
+        return baseProfileService.delete(id);
     }
 
+    @GetMapping(path = "/{id}")
     @Override
-    public DtoBaseProfile getById(UUID id) {
-        return null;
+    public DtoBaseProfile getById(@PathVariable(name = "id") UUID id) {
+        return baseProfileService.getById(id);
     }
 }

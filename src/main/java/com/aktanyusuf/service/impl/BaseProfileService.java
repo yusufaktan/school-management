@@ -21,7 +21,10 @@ public class BaseProfileService implements IBaseProfileService {
 
     @Override
     public List<DtoBaseProfile> add(DtoBaseProfileIU dto) {
-        return List.of();
+        BaseProfile baseProfile = new BaseProfile();
+        BeanUtils.copyProperties(dto, baseProfile);
+        baseProfileRepository.save(baseProfile);
+        return getAll();
     }
 
     @Override
@@ -38,16 +41,41 @@ public class BaseProfileService implements IBaseProfileService {
 
     @Override
     public DtoBaseProfile update(UUID id, DtoBaseProfileIU object) {
+        for (BaseProfile baseProfile : baseProfileRepository.findAll()){
+            if (baseProfile.getId().equals(id)){
+                BeanUtils.copyProperties(object, baseProfile);
+                baseProfileRepository.save(baseProfile);
+                DtoBaseProfile dtoBaseProfile = new DtoBaseProfile();
+                BeanUtils.copyProperties(baseProfile, dtoBaseProfile);
+                return dtoBaseProfile;
+            }
+        }
         return null;
     }
 
     @Override
     public List<DtoBaseProfile> delete(UUID id) {
-        return List.of();
+        List<BaseProfile> baseProfiles = baseProfileRepository.findAll();
+        for (BaseProfile baseProfile : baseProfiles){
+            if (id.equals(baseProfile.getId())){
+                baseProfileRepository.delete(baseProfile);
+                return getAll();
+            }
+        }
+        return null;
     }
 
     @Override
     public DtoBaseProfile getById(UUID id) {
+        List<BaseProfile> baseProfiles = baseProfileRepository.findAll();
+        for (BaseProfile baseProfile : baseProfiles){
+            if (id.equals(baseProfile.getId())){
+                DtoBaseProfile dtoBaseProfile = new DtoBaseProfile();
+                BeanUtils.copyProperties(baseProfile, dtoBaseProfile);
+                return dtoBaseProfile;
+
+            }
+        }
         return null;
     }
 }
