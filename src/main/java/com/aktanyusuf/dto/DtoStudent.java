@@ -1,6 +1,5 @@
 package com.aktanyusuf.dto;
 
-import com.aktanyusuf.model.BaseProfile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +13,6 @@ public class DtoStudent {
 
     private UUID id;
     private double gpa;
-    private BaseProfile studentProfile;
+    private DtoBaseProfile studentProfile;
 
 }

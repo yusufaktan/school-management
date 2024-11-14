@@ -41,4 +41,10 @@ public class BaseProfile {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @OneToOne(mappedBy = "studentProfile")
+    private Student student;
+
+    @OneToOne(mappedBy = "teacherProfile")
+    private Teacher teacher;
+
 }

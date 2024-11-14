@@ -1,6 +1,11 @@
 package com.aktanyusuf.service;
 
-public interface IStudentService extends IBaseService{
+import com.aktanyusuf.dto.DtoStudent;
+import com.aktanyusuf.dto.DtoStudentIU;
+
+import java.util.UUID;
+
+public interface IStudentService extends IBaseService<DtoStudent, UUID, DtoStudentIU>{
 
 
 }

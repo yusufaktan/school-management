@@ -17,7 +17,7 @@ public class DtoCourse {
     private UUID id;
     private String name;
     private Integer credits;
-    private Department department;
-    private Classroom classroom;
+    private DtoDepartment department;
+
 
 }

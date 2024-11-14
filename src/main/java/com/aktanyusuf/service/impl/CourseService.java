@@ -1,10 +1,12 @@
 package com.aktanyusuf.service.impl;
 
 import com.aktanyusuf.service.ICourseService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class CourseService implements ICourseService {
 
     @Override

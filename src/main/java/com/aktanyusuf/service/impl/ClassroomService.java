@@ -2,7 +2,10 @@ package com.aktanyusuf.service.impl;
 
 import com.aktanyusuf.dto.DtoClassroom;
 import com.aktanyusuf.dto.DtoClassroomIU;
+import com.aktanyusuf.dto.DtoCourse;
+import com.aktanyusuf.dto.DtoDepartment;
 import com.aktanyusuf.model.Classroom;
+import com.aktanyusuf.model.Course;
 import com.aktanyusuf.repository.ClassroomRepository;
 import com.aktanyusuf.service.IClassroomService;
 import org.springframework.beans.BeanUtils;
@@ -33,8 +36,19 @@ public class ClassroomService implements IClassroomService {
         List<DtoClassroom> dtoClassrooms = new ArrayList<>();
         for (Classroom classroom : classrooms){
             DtoClassroom dtoClassroom = new DtoClassroom();
+            List<DtoCourse> dtoCourses = new ArrayList<>();
+            if (classroom.getCourses() != null && !classroom.getCourses().isEmpty()){
+                for (Course course : classroom.getCourses()){
+                    DtoDepartment dtoDepartment = new DtoDepartment();
+                    DtoCourse dtoCourse = new DtoCourse();
+                    BeanUtils.copyProperties(course.getDepartment(), dtoDepartment);
+                    BeanUtils.copyProperties(course, dtoCourse);
+                    dtoCourse.setDepartment(dtoDepartment);
+                    dtoCourses.add(dtoCourse);
+                }
+            }
+            dtoClassroom.setCourses(dtoCourses);
             BeanUtils.copyProperties(classroom, dtoClassroom);
-
             dtoClassrooms.add(dtoClassroom);
         }
         return dtoClassrooms;
