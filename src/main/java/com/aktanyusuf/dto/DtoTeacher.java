@@ -17,7 +17,7 @@ public class DtoTeacher {
 
     private UUID id;
     private DepartmentRole departmentRole;
-    private BaseProfile teacherProfile;
-    private Department department;
+    private DtoBaseProfile teacherProfile;
+    private DtoDepartment department;
 
 }
