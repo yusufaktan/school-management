@@ -30,14 +30,16 @@ public class StudentController implements IStudentController {
         return studentService.getAll();
     }
 
+    @PutMapping(path = "/{id}")
     @Override
-    public DtoStudent update(UUID id, DtoStudentIU object) {
-        return null;
+    public DtoStudent update(@PathVariable(name = "id") UUID id, @RequestBody @Valid DtoStudentIU object) {
+        return studentService.update(id, object);
     }
 
+    @DeleteMapping(path = "/{id}")
     @Override
-    public List<DtoStudent> delete(UUID id) {
-        return List.of();
+    public List<DtoStudent> delete(@PathVariable(name = "id") UUID id) {
+        return studentService.delete(id);
     }
 
     @GetMapping(path = "/{id}")

@@ -47,12 +47,26 @@ public class StudentService implements IStudentService {
 
     @Override
     public DtoStudent update(UUID id, DtoStudentIU object) {
+        Optional<Student> optional = studentRepository.findById(id);
+        if (optional.isPresent()){
+            Student student = new Student();
+            BeanUtils.copyProperties(object, student);
+            studentRepository.save(student);
+            DtoStudent dtoStudent = new DtoStudent();
+            BeanUtils.copyProperties(student, dtoStudent);
+            return dtoStudent;
+        }
         return null;
     }
 
     @Override
     public List<DtoStudent> delete(UUID id) {
-        return List.of();
+        Optional<Student> optional = studentRepository.findById(id);
+        if (optional.isPresent()){
+            studentRepository.delete(optional.get());
+            return getAll();
+        }
+        return null;
     }
 
     @Override
