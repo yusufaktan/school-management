@@ -1,7 +1,5 @@
 package com.aktanyusuf.dto;
 
-import com.aktanyusuf.model.Classroom;
-import com.aktanyusuf.model.Department;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +15,7 @@ public class DtoCourse {
     private UUID id;
     private String name;
     private Integer credits;
+    private DtoClassroomInfo classroom;
     private DtoDepartment department;
 
 
