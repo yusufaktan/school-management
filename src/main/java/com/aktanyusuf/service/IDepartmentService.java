@@ -1,4 +1,9 @@
 package com.aktanyusuf.service;
 
-public interface IDepartmentService extends IBaseService{
+import com.aktanyusuf.dto.DtoDepartment;
+import com.aktanyusuf.dto.DtoDepartmentIU;
+
+import java.util.UUID;
+
+public interface IDepartmentService extends IBaseService<DtoDepartment, UUID, DtoDepartmentIU>{
 }
